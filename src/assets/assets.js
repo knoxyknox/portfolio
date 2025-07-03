@@ -4,7 +4,7 @@ import work_station from './work_station.svg';
 import black_station from './black_stattion.svg';
 import color_station from './color_station.svg';
 import pic from './pic.webp';
-import homepage from './homepage .png';
+import homepage from './homepage.png';
 import portfolio_image from './portfolio_image.PNG';
 import student_dashboard from './student_dashboard.PNG';
 
