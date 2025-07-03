@@ -1,0 +1,136 @@
+.resume {
+  background: linear-gradient(
+    90deg,
+    hsla(32, 100%, 49%, 1) 37%,
+    hsla(216, 100%, 4%, 1) 3%
+  );
+  height: 100%;
+}
+.resume-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+}
+.heading span {
+  color: var(--main-color);
+}
+.heading {
+  margin-bottom: 2.5rem;
+}
+.resume-box .desc {
+  margin: 2rem 0px 2.5rem;
+}
+.resume-box h2 {
+  font-size: 4.5rem;
+  margin: 2rem 0px 2.5rem;
+}
+.resume-box p {
+  font-size: 1.6rem;
+}
+
+/* RESUME LIST */
+.resume-box .heading {
+  font-size: 3.5rem;
+  text-align: left;
+}
+.resume-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem;
+  height: 45rem;
+  overflow: auto;
+}
+.resume-list .resume-item {
+  background: var(--second-bg-color);
+  border-radius: 0.8rem;
+  padding: 3rem 2.5rem;
+  height: calc((45rem - 2rem) / 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.resume-item .year {
+  color: var(--main-color);
+}
+.resume-item i {
+  font-size: 2rem;
+}
+.resume-item h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.resume-item .company {
+  color: var(--white-color);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.resume-box .resume-btn {
+  width: 100%;
+  height: 5.3rem;
+  background: var(--bg-color);
+  border: 0.3rem solid var(--bg-color);
+  font-size: 1.6rem;
+  color: var(--white-color);
+  font-weight: 500;
+  margin-bottom: 2rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+.resume-btn.active {
+  border: 0.2rem solid var(--white-color);
+}
+
+.resume-list::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 1rem;
+ 
+}
+.resume-list::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+.resume-list:hover::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+
+
+@media (max-width: 768px) {
+  .resume {
+    
+    background: linear-gradient(
+      180deg,
+      hsla(32, 100%, 49%, 1) 450px,
+      hsla(216, 100%, 4%, 1) 100px
+    );
+
+    min-height: 100vh; /* Ensures at least viewport height */
+    height: fit-content;
+  }
+
+  .resume-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  
+ 
+}
+
+@media (max-width: 450px) {
+  .resume {
+    background: linear-gradient(
+      180deg,
+      hsla(32, 100%, 49%, 1) 410px,
+      hsla(216, 100%, 4%, 1) 100px
+    );
+  }
+}
+@media (max-width: 400px) {
+  .resume-box h2,
+  .resume-box .heading,
+  .resume-box .desc,
+  .resume-detail.about .resume-item {
+    text-align: center;
+  }
+}

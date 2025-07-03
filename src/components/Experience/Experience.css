@@ -1,0 +1,28 @@
+
+.role{
+  font-weight: 300;
+  color: var(--second-color);
+}
+.exp-position{
+  color: var(--second-color);
+}
+
+
+@media(max-width: 1178px){
+  .experience .resume-list{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+ 
+
+

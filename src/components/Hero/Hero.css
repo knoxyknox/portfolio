@@ -1,0 +1,354 @@
+.hero {
+  background: linear-gradient(
+    90deg,
+    hsla(216, 100%, 4%, 1) 73%,
+    hsla(32, 100%, 49%, 1) 7%
+  );
+  height: 100%;
+  overflow: hidden;
+  padding-top: 20rem;
+}
+.hero-container {
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  justify-items: flex-end;
+  
+  align-items: center;
+}
+/* HERO LEFT */
+.hero-left h1 {
+  font-size: clamp(3.5rem, 10vw, 5.5rem);
+ 
+  opacity: 0;
+  animation: slideRight 1s ease forwards;
+  animation-delay: 0.7s;
+}
+.hero-left h2 {
+  display: inline-block;
+  font-size: 3.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  opacity: 0;
+  animation: slideRight 1s ease forwards;
+  animation-delay: 0.7s;
+}
+.hero-left p {
+  font-size: 1.6rem;
+  margin: 1rem 0 2.5rem;
+  opacity: 0;
+  animation: slideLeft 1s ease forwards;
+  animation-delay: 1.3s;
+}
+.hero-left p span {
+  color: var(--main-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  opacity: 0;
+  animation: zoomIn 2s ease forwards;
+  animation-delay: 2.1s;
+}
+
+/* HERO RIGHT */
+.hero-right {
+  opacity: 0;
+  animation: zoomIn 1s ease forwards, floatImage 4s ease-in-out infinite;
+  animation-delay: 2.1s, 3.1s;
+}
+.glowing-circle {
+  position: relative;
+  width: 42rem;
+  height: 42rem;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 3rem;
+}
+.glowing-circle::after {
+  content: '';
+  position: absolute;
+  width: 40rem;
+  height: 40rem;
+  background: var(--bg-color);
+  border-radius: 50%;
+}
+.glowing-circle span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  background: linear-gradient(90deg, var(--main-color), #003566);
+  border-radius: 50%;
+  animation: circleRotate 5s linear infinite;
+}
+.glowing-circle span:nth-child(1) {
+  filter: blur(1rem);
+}
+
+.hero-right-image {
+  position: relative;
+  width: 96%;
+  height: 96%;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  border-radius: 50%;
+}
+.hero-right-image img {
+  position: absolute;
+  left: 50%;
+  top: -1rem;
+  display: block;
+  max-width: 60rem;
+  transform: translateX(-50%);
+  object-fit: cover;
+}
+
+.btn {
+  padding: 1rem 4rem;
+  position: relative;
+  font-size: 1.6rem;
+  border-radius: 3rem;
+  background: var(--main-color);
+  /* display: inline-block; */
+  color: var(--white-color);
+  border: none;
+  opacity: 0;
+  display: inline-flex;
+  justify-content: center;
+  letter-spacing: 0.1rem;
+  z-index: 1;
+  animation: slideTop 1s ease forwards;
+  animation-delay: 1.8s;
+  cursor: pointer;
+  /* transition: color 0.5s ease; */
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: linear-gradient(70deg, #fb8500, #000814, #000814);
+  z-index: -1;
+  border-radius: 3rem;
+  background-size: 200%;
+  filter: blur(3px);
+  border-color: var(--main-color);
+  transition: background-position 0.5s ease;
+}
+.btn:hover::before {
+  background-position: 100% 0;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: linear-gradient(120deg, #fb8500 15%, #000814, #000814);
+  background-position: 0 0;
+  z-index: -1;
+  border-radius: 4rem;
+  background-size: 200%;
+  transition: 0.5s ease;
+  filter: blur(2px);
+  transition: background-position 0.5s ease;
+}
+
+.btn:hover::after {
+  background-position: 100% 0;
+}
+.btn.active::after {
+  background-position: 100% 0;
+  color: #fb8500;
+}
+.btn.active::before {
+  background-position: 100% 0;
+  color: #fb8500;
+}
+.btn.active {
+  color: #fb8500;
+}
+
+/* ANIMATIONS */
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideTop {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatImage {
+  0% {
+    /* opacity: 0; */
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-24px);
+  }
+  100% {
+    /* opacity: 1; */
+    transform: translateY(0);
+  }
+}
+/* START OF GLOWING CIRCLE ANIMATION */
+@keyframes circleRotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* GLOWING IMAGE ANIMATION ENDS HERE */
+
+/* RESPONSIVENESS */
+@media (min-width: 768px) and (max-width: 800px) {
+  .hero-container {
+    gap: 5rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    background: var(--bg-color);
+    overflow: auto;
+    padding-top: 10rem;
+  }
+
+  .hero-right-image {
+    width: 80%;
+    height: 80%;
+  }
+  .hero-container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 5rem;
+    padding-bottom: 2rem;
+  }
+  .hero-right {
+    grid-row: 1 / 1;
+
+    justify-content: center;
+  }
+
+  .glowing-circle {
+    position: relative;
+    width: 42rem;
+    height: 42rem;
+    top: 3rem;
+  }
+  .glowing-circle::after {
+    width: 80%;
+    height: 80%;
+  }
+  .glowing-circle span {
+    width: 85%;
+    height: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-right-image {
+    width: 30rem;
+    height: 30rem;
+  }
+  .glowing-circle::after {
+    width: 70%;
+    height: 70%;
+  }
+  .glowing-circle span {
+    width: 75%;
+    height: 75%;
+  }
+}
+@media (max-width: 400px) {
+  .hero-left {
+    text-align: center;
+  }
+}
+@media (max-width: 360px) {
+  .hero {
+    overflow-x: hidden;
+  }
+  .hero-container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 3rem;
+  }
+  .glowing-circle {
+    width: 28rem;
+    height: 28rem;
+    max-width: 100%;
+  }
+  .glowing-circle::after {
+    width: 3rem;
+    height: 3rem;
+  }
+  .glowing-circle span {
+    width: 27rem;
+    height: 27rem;
+  }
+  .hero-right-image {
+    width: 25rem;
+    height: 25rem;
+    max-width: 100%;
+  }
+  .hero-left {
+    text-align: center;
+  }
+}

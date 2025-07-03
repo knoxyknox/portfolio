@@ -1,0 +1,18 @@
+.resume-detail.about .resume-list {
+ 
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}
+.resume-detail.about .resume-item {
+  height: auto;
+  padding: 0 0 0.5rem;
+ 
+  background: transparent;
+}
+.resume-detail.about .resume-item p {
+  color: var(--main-color);
+}
+.resume-detail.about .resume-item p span {
+  color: var(--white-color);
+  margin: 1rem;
+  font-size: 1.8rem;
+}
