@@ -53,11 +53,11 @@ const Projects = () => {
                     <p>{list.tech}</p>
                   </div>
                   <div className='live-github'>
-                    <a href='#'>
+                    <a href={list.live_url}>
                       <i className={list.icon_arrow}></i>
                       <span>{list.live}</span>
                     </a>
-                    <a href='#'>
+                    <a href={list.git_url}>
                       <i className={list.icon_git}></i>
                       <span> {list.git}</span>
                     </a>
