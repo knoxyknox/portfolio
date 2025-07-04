@@ -1,26 +1,40 @@
 import './Projects.css';
 import { portfolioList } from '../../assets/assets';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-const Projects = () => {
+const Projects = ({ interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  
+  const handleNext = useCallback(() => {
+    setCurrentIndex(prevIndex => (prevIndex + 1) % portfolioList.length);
+  }, []);
 
-  const handleNext = () => {
-    const newIndex = (currentIndex + 1) % portfolioList.length;
+  const handlePrev = useCallback(() => {
+    setCurrentIndex(
+      prevIndex => (prevIndex - 1 + portfolioList.length) % portfolioList.length
+    );
+  }, []);
 
-    setCurrentIndex(newIndex);
-  };
-  const handlePrev = () => {
-    const newIndex =
-      (currentIndex - 1 + portfolioList.length) % portfolioList.length;
-
-    setCurrentIndex(newIndex);
-  };
-  const handleIndicatorClick = index => {
+  const handleIndicatorClick = useCallback(index => {
     setCurrentIndex(index);
-  };
+  }, []);
+
+  const handlePause = useCallback(() => {
+    setIsPaused(true);
+  }, []);
+  const handleResume = useCallback(() => {
+    setIsPaused(false);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!isPaused) {
+        setCurrentIndex(prevIndex => (prevIndex + 1) % portfolioList.length);
+      }
+    }, interval);
+    return () => clearInterval(timer);
+  }, [isPaused, interval]);
 
   return (
     <section className='portfolio'>
@@ -28,8 +42,21 @@ const Projects = () => {
         Latest <span>Project</span>
       </h2>
 
-      <div className='portfolio-container carousel'>
-        <div className='carousel-control next' onClick={handleNext}>
+      <div
+        onMouseOver={handlePause}
+        onMouseOut={handleResume}
+        onTouchStart={handlePause}
+        onTouchEnd={handleResume}
+        onFocus={handlePause}
+        onBlur={handleResume}
+        aria-label='Portfolio carousel'
+        className='portfolio-container carousel'
+      >
+        <div
+          className='carousel-control next'
+          onClick={handleNext}
+          aria-label='Next project'
+        >
           <i className='bx bx-chevron-right'></i>
         </div>
 
@@ -43,6 +70,7 @@ const Projects = () => {
               style={{
                 transform: `translateX(${(index - currentIndex) * 100}%)`,
               }}
+              aria-hidden={index != currentIndex}
             >
               <h3>{list.name}</h3>
               <div className='portfolio-box box-grid'>
@@ -53,25 +81,35 @@ const Projects = () => {
                     <p>{list.tech}</p>
                   </div>
                   <div className='live-github'>
-                    <a href={list.live_url}>
+                    <a
+                      href={list.live_url}
+                      aria-label={`view live demo of ${list.name}`}
+                    >
                       <i className={list.icon_arrow}></i>
                       <span>{list.live}</span>
                     </a>
-                    <a href={list.git_url}>
+                    <a
+                      href={list.git_url}
+                      aria-label={`view github repo of ${list.name}`}
+                    >
                       <i className={list.icon_git}></i>
                       <span> {list.git}</span>
                     </a>
                   </div>
                 </div>
                 <div className='image'>
-                  <img src={list.port_img} alt='' />
+                  <img src={list.port_img} alt={`${list.name} screenshot`} />
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className='carousel-control prev' onClick={handlePrev}>
+        <div
+          className='carousel-control prev'
+          onClick={handlePrev}
+          aria-label='Previous project'
+        >
           <i className='bx bx-chevron-left'></i>
         </div>
         <div className='carousel-indicators'>
