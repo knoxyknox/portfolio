@@ -8,6 +8,7 @@ import homepage from './homepage.png';
 import portfolio_image from './portfolio_image.PNG';
 import student_dashboard from './student_dashboard.PNG';
 
+
 export const images = {
   my_pic,
   computer,
