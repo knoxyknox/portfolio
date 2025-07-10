@@ -16,7 +16,7 @@ export default defineConfig({
             // Add other large dependencies here (e.g., 'lodash', 'date-fns')
           ],
           // Optional: Group route-specific utilities or components
-          utils: ['./src/utils/someUtility.js'], // Adjust based on your project
+          // utils: ['./src/utils/someUtility.js'], // Adjust based on your project
         },
       },
     },
