@@ -127,11 +127,11 @@ export const aboutMeList = [
     name: 'Gender',
     span: 'Male',
   },
-  {
-    id: 2,
-    name: 'Age',
-    span: '38 years old',
-  },
+  // {
+  //   id: 2,
+  //   name: 'Age',
+  //   span: '38 years old',
+  // },
   {
     id: 3,
     name: 'Status',
